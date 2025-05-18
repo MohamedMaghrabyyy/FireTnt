@@ -68,29 +68,6 @@ public class SecurityConfig {
     }
 
 
-//    @Bean
-//    public AuthenticationManager authenticationManager() {
-//        return authentication -> {
-//            String firebaseUid = (String) authentication.getCredentials();
-//            FirebasePrincipal principal = authSvc.getPrincipalByUid(firebaseUid);
-//            return new UsernamePasswordAuthenticationToken(principal, null, new ArrayList<>());
-//        };
-//    }
-
-    // in SecurityConfig
-//    @Bean
-//    public AuthenticationManager authenticationManager() {
-//        return authentication -> {
-//            String firebaseUid = (String) authentication.getCredentials();
-//            FirebasePrincipal principal = authSvc.getPrincipalByUid(firebaseUid);
-//            return new UsernamePasswordAuthenticationToken(
-//                    principal,
-//                    null,
-//                    principal.getAuthorities()   // now contains ROLE_GUEST etc
-//            );
-//        };
-//    }
-
     // in SecurityConfig
     @Bean
     public AuthenticationManager authenticationManager() {
@@ -147,35 +124,5 @@ public class SecurityConfig {
     }
 
 
-
-
-//    @Bean
-//    public OncePerRequestFilter sessionCookieFilter() {
-//        return new OncePerRequestFilter() {
-//            @Override
-//            protected void doFilterInternal(
-//                    HttpServletRequest req,
-//                    HttpServletResponse res,
-//                    FilterChain chain
-//            ) throws ServletException, IOException {
-//                Cookie c = WebUtils.getCookie(req, "SESSION");
-//                if (c != null) {
-//                    FirebaseToken token = authSvc.verifySession(c.getValue());
-//                    String role = (String) token.getClaims().get("role");
-//                    List<GrantedAuthority> auths = List.of(
-//                            new SimpleGrantedAuthority("ROLE_" + role)
-//                    );
-//                    Authentication auth = new UsernamePasswordAuthenticationToken(
-//                            new FirebasePrincipal(token.getUid(), token.getEmail()),
-//                            null,
-//                            auths
-//                    );
-//
-//                    SecurityContextHolder.getContext().setAuthentication(auth);
-//                }
-//                chain.doFilter(req, res);
-//            }
-//        };
-//    }
 }
 

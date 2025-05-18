@@ -29,60 +29,6 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Service
-//public class FirebaseAuthenticationService {
-//    private final UserRepository userRepo;
-//    private final FirebaseAuth firebaseAuth;
-//
-//    public FirebaseAuthenticationService(
-//            UserRepository userRepo,
-//            FirebaseAuth firebaseAuth
-//    ) {
-//        this.userRepo     = userRepo;
-//        this.firebaseAuth = firebaseAuth;
-//    }
-//
-//    @Transactional
-//    public User loginWithToken(String idToken) {
-//        try {
-//
-//            FirebaseToken decoded = firebaseAuth.verifyIdToken(idToken);
-//
-//            String uid   = decoded.getUid();
-//            String email = decoded.getEmail();
-//
-//            return userRepo.findByFirebaseUid(uid)
-//                    .orElseGet(() -> {
-//                        User u = new User();
-//                        u.setFirebaseUid(uid);
-//                        u.setEmail(email);
-//                        u.setPassword("");
-//                        return userRepo.save(u);
-//                    });
-//        } catch (FirebaseAuthException e) {
-//            throw new ResponseStatusException(
-//                    HttpStatus.UNAUTHORIZED,
-//                    "Invalid Firebase ID token",
-//                    e
-//            );
-//        }
-//    }
-//
-//    @Transactional
-//    public void logout(String idToken) {
-//        try {
-//            FirebaseToken decoded = firebaseAuth.verifyIdToken(idToken);
-//            firebaseAuth.revokeRefreshTokens(decoded.getUid());
-//        } catch (FirebaseAuthException e) {
-//            throw new ResponseStatusException(
-//                    HttpStatus.BAD_REQUEST,
-//                    "Could not revoke tokens",
-//                    e
-//            );
-//        }
-//    }
-//}
-
 @Service
 public class FirebaseAuthenticationService {
     private final UserRepository userRepo;

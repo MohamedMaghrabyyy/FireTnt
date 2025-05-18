@@ -50,108 +50,7 @@ public class AuthController {
         Cookie c = WebUtils.getCookie(req, name);
         return c != null ? c.getValue() : null;
     }
-//    @PostMapping("/login")
-//    public LoginResponse login(@RequestBody LoginRequest req) {
-//        return authSvc.loginWithEmail(req);
-//    }
 
-//    @PostMapping("/login")
-//    public LoginResponse login(@RequestBody LoginRequest req,
-//                               HttpServletResponse res) {
-//        // 1. authenticate and get idToken+refreshToken
-//        LoginResponse login = authSvc.loginWithEmail(req);
-//
-//        // 2. create session cookie (5 days)
-//        String session = authSvc.createSessionCookie(login.getIdToken());
-//        setCookie(res, "SESSION", session, 5 * 24 * 3600);
-//
-//        // 3. store refresh token (30 days)
-//        setCookie(res, "REFRESH_TOKEN", login.getRefreshToken(),
-//                30 * 24 * 3600);
-//
-//        return login;
-//    }
-
-//@PostMapping("/login")
-//public String handleLogin(
-//        @ModelAttribute("loginRequest") LoginRequest request,
-//        BindingResult result,
-//        HttpServletResponse response,
-//        Model model
-//) {
-//    if (result.hasErrors()) {
-//        return "login";
-//    }
-//
-//    try {
-//        LoginResponse login = authSvc.loginWithEmail(request);
-//
-//        String session = authSvc.createSessionCookie(login.getIdToken());
-//
-//        ResponseCookie sessionCookie = ResponseCookie.from("SESSION", session)
-//                .httpOnly(true)
-//                .secure(true)
-//                .path("/")
-//                .maxAge(Duration.ofDays(5))
-//                .sameSite("Strict")
-//                .build();
-//        response.addHeader(HttpHeaders.SET_COOKIE, sessionCookie.toString());
-//
-//        return "redirect:/api/users/dashboard";
-//
-//    } catch (ResponseStatusException e) {
-//        model.addAttribute("error", "Invalid email or password.");
-//        return "login";
-//    }
-//}
-
-//    @PostMapping("/login")
-//    public ResponseEntity<?> handleLogin(
-//            @ModelAttribute("loginRequest") LoginRequest request, // For HTML form submission
-//            BindingResult result,
-//            HttpServletRequest requestHttp, // To check the accept header for response type
-//            HttpServletResponse response,
-//            Model model
-//    ) {
-//        // Check if the request expects HTML or JSON
-//        boolean isJsonRequest = requestHttp.getHeader("Accept") != null && requestHttp.getHeader("Accept").contains("application/json");
-//
-//        if (result.hasErrors()) {
-//            return isJsonRequest ? ResponseEntity.badRequest().body("Invalid input data.") : "login";
-//        }
-//
-//        try {
-//            LoginResponse login = authSvc.loginWithEmail(request);
-//
-//            // Create session cookie
-//            String session = authSvc.createSessionCookie(login.getIdToken());
-//            ResponseCookie sessionCookie = ResponseCookie.from("SESSION", session)
-//                    .httpOnly(true)
-//                    .secure(true)
-//                    .path("/")
-//                    .maxAge(Duration.ofDays(5))
-//                    .sameSite("Strict")
-//                    .build();
-//            response.addHeader(HttpHeaders.SET_COOKIE, sessionCookie.toString());
-//
-//            if (isJsonRequest) {
-//                // Return LoginResponse as JSON
-//                return ResponseEntity.ok(login);
-//            } else {
-//                // Return HTML view redirection for web users
-//                return "redirect:/api/users/dashboard";
-//            }
-//
-//        } catch (ResponseStatusException e) {
-//            if (isJsonRequest) {
-//                // Return JSON error message for API users
-//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid email or password.");
-//            } else {
-//                model.addAttribute("error", "Invalid email or password.");
-//                return "login"; // Return the login view for web users
-//            }
-//        }
-//    }
 
     @PostMapping("/login")
     public String handleLogin(
@@ -222,12 +121,7 @@ public class AuthController {
         String session = authSvc.createSessionCookie(newIdToken);
         setCookie(res, "SESSION", session, 5 * 24 * 3600);
     }
-//    @PostMapping("/logout")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void logout(@RequestBody Map<String,String> body) {
-//        String idToken = body.get("idToken");
-//        authSvc.logout(idToken);
-//    }
+
     // existing login returns idToken+refresh, or you can skip if you go pure session
     @PostMapping("/sessionLogin")
     public LoginResponse sessionLogin(
