@@ -64,10 +64,11 @@
         <div class="flex justify-between items-center mb-2">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Guest Reviews</h2>
 
-        <a th:href="@{/guest/reviews/create/{propertyId}(propertyId=${property.propertyId})}"
-           class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow">
-            + Add Review
-        </a>
+            <a th:if="${role == 'GUEST'}"
+               th:href="@{/guest/reviews/create/{propertyId}(propertyId=${property.propertyId})}"
+               class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow">
+                + Add Review
+            </a>
         </div>
         <div th:if="${#lists.isEmpty(reviews)}" class="text-gray-500 italic">
             No reviews yet for this property.

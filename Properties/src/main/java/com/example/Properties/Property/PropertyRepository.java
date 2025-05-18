@@ -8,9 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, Integer> {
-    Property findByTitle(String title);
-    Property findByDescription(String description);
-    Property findByPricePerNight(double pricePerNight);
-    List<Property> findByIsBooked(boolean isBooked);
     List<Property> findByHostId(String hostId);
 }

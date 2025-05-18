@@ -36,12 +36,7 @@ public class PropertyController {
     }
 
 
-//    @GetMapping("/all")
-//    public String getAllProperties(Model model) {
-//        List<Property> propertyList = propertyService.getAllProperties();
-//        model.addAttribute("properties", propertyList);
-//        return "properties-list";
-//    }
+
     @GetMapping("/all")
     @ResponseBody
     @RateLimit(limit = 80, duration = 60, keyPrefix = "getAllProperties")
@@ -81,17 +76,7 @@ public class PropertyController {
     }
 
 
-    @GetMapping("/{id}/details")
-    @RateLimit(limit = 80, duration = 60, keyPrefix = "viewPropertyDetails")
-    public String viewPropertyDetails(@PathVariable Integer id, Model model) {
-        Property property = propertyService.getPropertyById(id);
-        if (property == null) {
-            return "redirect:/api/properties/all";
-        }
-        model.addAttribute("property", property);
 
-        return "property-details";
-    }
     @GetMapping("/{id}")
     @ResponseBody
     @RateLimit(limit = 80, duration = 60, keyPrefix = "getPropertyById")
