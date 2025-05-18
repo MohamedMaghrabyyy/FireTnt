@@ -87,15 +87,6 @@ public class NotificationController {
         return svc.markAsRead(id);
     }
 
-//    @PutMapping("/{id}/send")
-//    public boolean sendMail(@PathVariable Long id) {
-//        return svc.sendMail(id);
-//    }
-
-//    @PutMapping("/{id}/resend")
-//    public Notification resendMail(@PathVariable Long id) {
-//        return svc.resendMail(id);
-//    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

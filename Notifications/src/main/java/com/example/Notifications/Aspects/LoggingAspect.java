@@ -19,7 +19,7 @@ public class LoggingAspect {
     // Log before method execution
     @Before("controllerMethods()")
     public void logBefore(JoinPoint joinPoint) {
-        logger.info("📥 Entering endpoint: {}.{}() with args = {}",
+        logger.info(" Entering endpoint: {}.{}() with args = {}",
                 joinPoint.getSignature().getDeclaringTypeName(),
                 joinPoint.getSignature().getName(),
                 joinPoint.getArgs());
@@ -28,7 +28,7 @@ public class LoggingAspect {
     // Log after method execution
     @AfterReturning(pointcut = "controllerMethods()", returning = "result")
     public void logAfter(JoinPoint joinPoint, Object result) {
-        logger.info("📤 Exiting endpoint: {}.{}() with result = {}",
+        logger.info(" Exiting endpoint: {}.{}() with result = {}",
                 joinPoint.getSignature().getDeclaringTypeName(),
                 joinPoint.getSignature().getName(),
                 result);
@@ -37,7 +37,7 @@ public class LoggingAspect {
     // Log if exception is thrown
     @AfterThrowing(pointcut = "controllerMethods()", throwing = "ex")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
-        logger.error("❌ Exception in {}.{}() with message = {}",
+        logger.error(" Exception in {}.{}() with message = {}",
                 joinPoint.getSignature().getDeclaringTypeName(),
                 joinPoint.getSignature().getName(),
                 ex.getMessage(), ex);

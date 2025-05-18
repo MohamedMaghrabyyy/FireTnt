@@ -70,19 +70,6 @@ public class NotificationService {
         return n;
     }
 
-//    @Transactional
-//    public boolean sendMail(Long id) {
-//        Notification n = getById(id);
-//        return n.sendMail();
-//    }
-
-//    @Transactional
-//    public Notification resendMail(Long id) {
-//        Notification n = getById(id);
-//        sendMailInternal(n);
-//        return n;
-//    }
-
 
     @DistributedLock(
             keyPrefix = "notificationDelete",
