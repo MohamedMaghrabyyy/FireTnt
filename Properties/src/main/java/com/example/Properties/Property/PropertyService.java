@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class PropertyService {
     private PaymentAndBookingClient paymentAndBookingClient;
-    private ReviewsClient reviewClient; // You said you created ReviewClient already
+    private ReviewsClient reviewClient;
     private static final Logger log = LoggerFactory.getLogger(PropertyService.class); // Add logger
     private final PropertyRepository propertyRepository;
     @Autowired
@@ -28,7 +28,7 @@ public class PropertyService {
     @Autowired
     private ObjectMapper objectMapper; // Inject ObjectMapper
     private static final String ALL_PROPERTIES_CACHE_KEY = "properties:all";
-    private static final Duration CACHE_TTL = Duration.ofMinutes(10); // Define cache TTL (e.g., 10 minutes)
+    private static final Duration CACHE_TTL = Duration.ofMinutes(10);
     @Autowired
     public PropertyService(PropertyRepository propertyRepository, ReviewsClient reviewClient , PaymentAndBookingClient paymentAndBookingClient) {
         this.propertyRepository = propertyRepository;
@@ -52,7 +52,6 @@ public class PropertyService {
         property.setPropertyType(dto.getPropertyType());
         property.setLocation(dto.getLocation());
 
-        // newly created properties are not booked
 
         Property savedProperty = propertyRepository.save(property);
 

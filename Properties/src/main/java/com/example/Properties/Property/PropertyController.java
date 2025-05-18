@@ -34,9 +34,6 @@ public class PropertyController {
         propertyService.createProperty(dto);
         return ResponseEntity.ok("Property created successfully");
     }
-
-
-
     @GetMapping("/all")
     @ResponseBody
     @RateLimit(limit = 80, duration = 60, keyPrefix = "getAllProperties")

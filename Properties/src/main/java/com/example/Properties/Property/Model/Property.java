@@ -15,7 +15,7 @@ public class Property {
 
     private String location;
     private String propertyType;
-    private String hostId; // Foreign key reference to User Microservice
+    private String hostId;
 
 public Property() {
 }

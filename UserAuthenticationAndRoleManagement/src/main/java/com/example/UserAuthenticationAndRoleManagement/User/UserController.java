@@ -53,11 +53,6 @@ public class UserController {
         return svc.fetchAll();
     }
 
-//    @GetMapping("/{id}")
-//    public User getById(@PathVariable Long id) {
-//        return svc.fetchById(id);
-//    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -65,10 +60,6 @@ public class UserController {
         return svc.createUser(dto);
     }
 
-//    @PutMapping("/{id}")
-//    public User update(@PathVariable Long id, @RequestBody UpdateUserDTO dto) {
-//        return svc.updateUser(id, dto);
-//    }
 
     @GetMapping("/properties/all")
     public String getAllProperties(Model model) {
@@ -115,11 +106,6 @@ public class UserController {
             String email = firebasePrincipal.getEmail();
             User user = svc.findByEmail(email);
             String roleName =user.getRole().name();
-//            switch (user.getRole()) {
-//                case ADMIN: return "home";
-//                case HOST: return "redirect:/host/home";
-//                default: return "redirect:/guest/home";
-//            }
             model.addAttribute("role", roleName);
             return "home";
         }
