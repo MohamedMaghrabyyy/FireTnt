@@ -51,12 +51,9 @@ private  static final Logger LOGGER = LoggerFactory.getLogger(HostController.cla
                                  BindingResult result,
                                  RedirectAttributes redirectAttributes,
                                  Principal principal) {
-//        if (result.hasErrors()) {
-//            return "add-property-form";
-//        }
 
         String hostId = getHostIdFromPrincipal(principal);
-        dto.setHostId(hostId); // ➡️ Important! Set hostId here, not from form.
+        dto.setHostId(hostId);
         hostService.createProperty(dto);
         redirectAttributes.addFlashAttribute("success", "Property created successfully!");
         return "redirect:/host/properties";
