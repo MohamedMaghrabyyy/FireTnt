@@ -33,5 +33,5 @@ public class LoggingAspect {
                 joinPoint.getSignature().getName(),
                 result);
     }
-    
+
 }

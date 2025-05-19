@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExceptionLoggingAspect {
 
-    @AfterThrowing(pointcut = "execution(* com.firetnt..*(..))", throwing = "ex")
+    @AfterThrowing(pointcut = "execution(* com.example.Notifications..*(..))", throwing = "ex")
     public void logAfterThrowing(Exception ex) {
         // You can use a logging framework like Log4j or SLF4J here
         System.err.println("Exception caught: " + ex.getMessage());
