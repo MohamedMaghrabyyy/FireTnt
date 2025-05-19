@@ -34,12 +34,5 @@ public class LoggingAspect {
                 result);
     }
 
-    // Log if exception is thrown
-    @AfterThrowing(pointcut = "controllerMethods()", throwing = "ex")
-    public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
-        logger.error("❌ Exception in {}.{}() with message = {}",
-                joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(),
-                ex.getMessage(), ex);
-    }
+
 }
